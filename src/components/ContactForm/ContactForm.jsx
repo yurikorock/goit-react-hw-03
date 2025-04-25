@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import { useId } from "react";
 import * as Yup from "yup";
+import css from "./ContactForm.module.css";
 
 import InputMask from "react-input-mask";
 
@@ -37,23 +38,38 @@ const ContactForm = ({ onAdd }) => {
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
-      <Form>
-        <div>
-          <label htmlFor={nameFieldId}>Name</label>
-          <Field type="text" name="name" placeholder="Name" id={nameFieldId} />
-          <ErrorMessage name="name" component="span" />
+      <Form className={css.form}>
+        <div className={css.field}>
+          <label className={css.label} htmlFor={nameFieldId}>
+            Name
+          </label>
+          <Field
+            type="text"
+            name="name"
+            placeholder="enter name"
+            id={nameFieldId}
+          />
+          <ErrorMessage className={css.errormsg} name="name" component="span" />
         </div>
-        <div>
-          <label htmlFor={numberFieldId}>Number</label>
+        <div className={css.field}>
+          <label className={css.label} htmlFor={numberFieldId}>
+            Number
+          </label>
           <Field
             type="text"
             name="number"
-            placeholder="Number"
+            placeholder="enter number"
             id={numberFieldId}
           />
-          <ErrorMessage name="number" component="span" />
+          <ErrorMessage
+            className={css.errormsg}
+            name="number"
+            component="span"
+          />
         </div>
-        <button type="submit">Add contact</button>
+        <button className={css.btn} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
